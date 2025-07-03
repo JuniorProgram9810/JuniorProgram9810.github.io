@@ -1,9 +1,0 @@
-<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       x:Class="PollAventuras.AppShell">
-
-    <!-- Aquí defines tu estructura de navegación principal -->
-    <!-- Por ejemplo: -->
-    <ShellContent Title="Inicio"
-                 ContentTemplate="{DataTemplate local:MainPage}" />
-</Shell>
