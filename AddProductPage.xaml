@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppIntegradora10A.Views.AddProductPage"
+             Title="AddProductPage">
+
+
+    <StackLayout Padding="20">
+
+        <Label Text="Agregar Producto" FontSize="24"  HorizontalOptions="Center"/>
+
+        <Entry x:Name="NombreEntry" Placeholder="Escribir nombre del producto"/>
+
+        <Entry x:Name="DescripcionEntry" Placeholder="Escriba la descripcion del producto"/>
+
+        <Entry x:Name="PrecioEntry" Placeholder="Escribir el precio del producto" Keyboard="Numeric"/>
+        <Button Text="Agregar" x:Name="BtnOnAddProducto" Clicked="BtnOnAddProducto_Clicked"/>
+        
+
+    </StackLayout>
+    
+    
+    </ContentPage>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppIntegradora10A.Views.RegisterPage"
+             Title="Crear Cuenta">
+
+    <ContentPage.Resources>
+        <Style x:Key="HeaderStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="#2196F3"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="0,20,0,30"/>
+        </Style>
+
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#4CAF50"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="Margin" Value="0,20,0,10"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="40" BackgroundColor="#F5F5F5">
+            <Label Text="🎮 Crear Cuenta" Style="{StaticResource HeaderStyle}"/>
+
+            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="15" Padding="30">
+                <StackLayout>
+                    <Label Text="Únete a la comunidad" FontSize="20" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,30"/>
+
+                    <Entry x:Name="NameEntry" 
+                           Placeholder="Nombre completo" 
+                           Style="{StaticResource EntryStyle}"/>
+
+                    <Entry x:Name="EmailEntry" 
+                           Placeholder="Correo electrónico" 
+                           Keyboard="Email"
+                           Style="{StaticResource EntryStyle}"/>
+
+                    <Entry x:Name="PasswordEntry" 
+                           Placeholder="Contraseña (mínimo 6 caracteres)" 
+                           IsPassword="True"
+                           Style="{StaticResource EntryStyle}"/>
+
+                    <Entry x:Name="ConfirmPasswordEntry" 
+                           Placeholder="Confirmar contraseña" 
+                           IsPassword="True"
+                           Style="{StaticResource EntryStyle}"/>
+
+                    <Button Text="Crear Cuenta" 
+                            x:Name="RegisterButton" 
+                            Clicked="RegisterButton_Clicked"
+                            Style="{StaticResource ButtonStyle}"/>
+
+                    <Label Text="¿Ya tienes cuenta? Inicia sesión" 
+                           FontSize="14" 
+                           TextColor="#666" 
+                           HorizontalOptions="Center" 
+                           Margin="0,20,0,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="LoginLink_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppIntegradora10A.Views.LoginPage"
+             Title="Iniciar Sesión">
+
+    <ContentPage.Resources>
+        <Style x:Key="HeaderStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="32"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="TextColor" Value="#2196F3"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="0,20,0,30"/>
+        </Style>
+
+        <Style x:Key="SubHeaderStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="TextColor" Value="#666"/>
+            <Setter Property="HorizontalOptions" Value="Center"/>
+            <Setter Property="Margin" Value="0,0,0,40"/>
+        </Style>
+
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Margin" Value="0,10"/>
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="TextColor" Value="Black"/>
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#2196F3"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="Margin" Value="0,20,0,10"/>
+        </Style>
+
+        <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="TextColor" Value="#2196F3"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="BorderColor" Value="#2196F3"/>
+            <Setter Property="BorderWidth" Value="2"/>
+            <Setter Property="CornerRadius" Value="25"/>
+            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="Margin" Value="0,10"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="40" BackgroundColor="#F5F5F5">
+            <!-- Header -->
+            <Label Text="🎮 GameSupport" Style="{StaticResource HeaderStyle}"/>
+            <Label Text="Tu compañero de aventuras" Style="{StaticResource SubHeaderStyle}"/>
+
+            <!-- Login Form -->
+            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="15" Padding="30">
+                <StackLayout>
+                    <Label Text="Iniciar Sesión" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,0,0,30"/>
+
+                    <Entry x:Name="EmailEntry" 
+                           Placeholder="Correo electrónico" 
+                           Keyboard="Email"
+                           Style="{StaticResource EntryStyle}"/>
+
+                    <Entry x:Name="PasswordEntry" 
+                           Placeholder="Contraseña" 
+                           IsPassword="True"
+                           Style="{StaticResource EntryStyle}"/>
+
+                    <Button Text="Iniciar Sesión" 
+                            x:Name="LoginButton" 
+                            Clicked="LoginButton_Clicked"
+                            Style="{StaticResource ButtonStyle}"/>
+
+                    <Button Text="Crear Cuenta" 
+                            x:Name="RegisterButton" 
+                            Clicked="RegisterButton_Clicked"
+                            Style="{StaticResource SecondaryButtonStyle}"/>
+
+                    <Label Text="¿Olvidaste tu contraseña?" 
+                           FontSize="14" 
+                           TextColor="#666" 
+                           HorizontalOptions="Center" 
+                           Margin="0,20,0,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="ForgotPassword_Tapped"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+            </Frame>
+
+            <!-- Game Features Preview -->
+            <Label Text="Características de la App" FontSize="20" FontAttributes="Bold" Margin="0,40,0,20" HorizontalOptions="Center"/>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="30">
+                <StackLayout HorizontalOptions="Center">
+                    <Label Text="📚" FontSize="30" HorizontalOptions="Center"/>
+                    <Label Text="Guías" FontSize="14" HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center">
+                    <Label Text="💡" FontSize="30" HorizontalOptions="Center"/>
+                    <Label Text="Consejos" FontSize="14" HorizontalOptions="Center"/>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center">
+                    <Label Text="🛠️" FontSize="30" HorizontalOptions="Center"/>
+                    <Label Text="Soporte" FontSize="14" HorizontalOptions="Center"/>
+                </StackLayout>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
