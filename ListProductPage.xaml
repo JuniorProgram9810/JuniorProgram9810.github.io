@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppIntegradora10A.Views.ListProductPage"
+             Title="ListProductPage">
+
+    <ContentPage.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="VerticalOptions"  Value="Center"/>
+            <Setter Property="FontSize" Value="Medium"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+
+        </Style>
+
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="BackgroundColor" Value="Red"/>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="VerticalOptions" Value="Center"/>
+            <Setter Property="WidthRequest" Value="60"/>
+            <Setter Property="HeightRequest" Value="35"/>
+            
+        </Style>
+
+
+
+
+    </ContentPage.Resources>
+
+
+    <StackLayout Padding="10">
+        <Grid Padding="5" RowSpacing="0">
+            <BoxView Color="Blue" HeightRequest="30" VerticalOptions="Start"/>
+            <Grid ColumnDefinitions="*,*,Auto" Padding="10" HorizontalOptions="FillAndExpand">
+
+                <Label Text="Nombre" Grid.Column="0" TextColor="White" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Label Text="Precio" Grid.Column="1" TextColor="White" FontAttributes="Bold" HorizontalOptions="Start" VerticalOptions="Center"/>
+                <Label Text="Accion" Grid.Column="2" TextColor="White" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center"/>
+                
+            </Grid>
+
+
+        </Grid>
+        <ListView x:Name="ProductListView" HasUnevenRows="True" SeparatorVisibility="None" >
+            <ListView.ItemTemplate>
+
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid ColumnDefinitions="*,*,Auto" Padding="10" HorizontalOptions="FillAndExpand">
+                            <Label Text="{Binding Nombre}" Grid.Column="0" Style="{StaticResource LabelStyle}"/>
+                            <Label Text="{Binding Precio}" Grid.Column="1" Style="{StaticResource LabelStyle}"/>
+
+                            <StackLayout Orientation="Horizontal" Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center" Spacing="5">
+                                <Button Text="Editar" x:Name="BtnEditProduct" Clicked="BtnEditProduct_Clicked" Style="{StaticResource ButtonStyle}"/>
+                                <Button Text="Eliminar" x:Name="BtnDeleteProduct" Clicked="BtnDeleteProduct_Clicked" Style="{StaticResource ButtonStyle}"/>
+                                
+
+                            </StackLayout>
+
+                        </Grid>
+                       
+                        
+                        
+                        
+                        
+                    </ViewCell>
+                    
+                    
+                </DataTemplate>
+                
+                
+                
+            </ListView.ItemTemplate>
+
+        </ListView>
+
+
+
+
+
+
+
+    </StackLayout>
+
+
+
+
+</ContentPage>
