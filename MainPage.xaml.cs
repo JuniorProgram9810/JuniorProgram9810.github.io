@@ -1,0 +1,9 @@
+namespace PollAventuras10A.Views;
+
+public partial class MainPage : ContentPage
+{
+	public MainPage()
+	{
+		InitializeComponent();
+	}
+}

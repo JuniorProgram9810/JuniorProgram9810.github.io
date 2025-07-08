@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="PollAventuras10A.Views.MainPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Inicio"
+             BackgroundColor="#f8f9fa">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Frame Grid.Row="0" 
+               BackgroundColor="#2C3E50" 
+               CornerRadius="0,0,15,15" 
+               Padding="20,30,20,20"
+               HasShadow="True">
+            <StackLayout>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Column="0">
+                        <Label Text="¡Bienvenido!"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               TextColor="White"/>
+                        <Label Text="{Binding UserName}"
+                               FontSize="14"
+                               TextColor="#BDC3C7"/>
+                    </StackLayout>
+
+                    <Button Grid.Column="1"
+                            Text="Cerrar Sesión"
+                            BackgroundColor="#E74C3C"
+                            TextColor="White"
+                            FontSize="12"
+                            CornerRadius="15"
+                            Padding="15,8"
+                            Command="{Binding LogoutCommand}"/>
+                </Grid>
+            </StackLayout>
+        </Frame>
+
+        <!-- Contenido Principal -->
+        <ScrollView Grid.Row="1" Padding="20">
+            <StackLayout Spacing="20">
+
+                <!-- Sección Artículos Destacados -->
+                <StackLayout Spacing="15">
+                    <Label Text="Artículos Destacados"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#2C3E50"/>
+
+                    <CollectionView ItemsSource="{Binding FeaturedArticles}"
+                                    HeightRequest="200">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" 
+                                               ItemSpacing="15"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White"
+                                       CornerRadius="15"
+                                       HasShadow="True"
+                                       Padding="0"
+                                       WidthRequest="250">
+                                    <StackLayout>
+                                        <Image Source="{Binding ImageUrl}"
+                                               HeightRequest="100"
+                                               Aspect="AspectFill"/>
+                                        <StackLayout Padding="15">
+                                            <Label Text="{Binding Title}"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#2C3E50"
+                                                   LineBreakMode="TailTruncation"/>
+                                            <Label Text="{Binding Summary}"
+                                                   FontSize="12"
+                                                   TextColor="#7F8C8D"
+                                                   LineBreakMode="TailTruncation"
+                                                   MaxLines="2"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ArticleSelectedCommand}"
+                                                              CommandParameter="{Binding}"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <!-- Sección Categorías -->
+                <StackLayout Spacing="15">
+                    <Label Text="Categorías"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#2C3E50"/>
+
+                    <CollectionView ItemsSource="{Binding Categories}">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" 
+                                             Span="2" 
+                                             HorizontalItemSpacing="15"
+                                             VerticalItemSpacing="15"/>
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="{Binding Color}"
+                                       CornerRadius="15"
+                                       HasShadow="True"
+                                       Padding="20"
+                                       HeightRequest="120">
+                                    <StackLayout VerticalOptions="CenterAndExpand"
+                                                 Ho="CenterAndExpand">
+                                        <Label Text="{Binding Icon}"
+                                               FontSize="30"
+                                               HorizontalTextAlignment="Center"
+                                               TextColor="White"/>
+                                        <Label Text="{Binding Name}"
+                                               FontSize="14"
+                                               FontAttributes="Bold"
+                                               HorizontalTextAlignment="Center"
+                                               TextColor="White"/>
+                                    </StackLayout>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CategorySelectedCommand}"
+                                                              CommandParameter="{Binding}"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+                <!-- Sección Artículos Recientes -->
+                <StackLayout Spacing="15">
+                    <Label Text="Artículos Recientes"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="#2C3E50"/>
+
+                    <CollectionView ItemsSource="{Binding RecentArticles}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BackgroundColor="White"
+                                       CornerRadius="15"
+                                       HasShadow="True"
+                                       Padding="15"
+                                       Margin="0,5">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="80"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Image Grid.Column="0"
+                                               Source="{Binding ImageUrl}"
+                                               HeightRequest="60"
+                                               WidthRequest="60"
+                                               Aspect="AspectFill"
+                                               VerticalOptions="Center"/>
+
+                                        <StackLayout Grid.Column="1"
+                                                     Spacing="5"
+                                                     VerticalOptions="Center">
+                                            <Label Text="{Binding Title}"
+                                                   FontSize="14"
+                                                   FontAttributes="Bold"
+                                                   TextColor="#2C3E50"
+                                                   LineBreakMode="TailTruncation"/>
+                                            <Label Text="{Binding Summary}"
+                                                   FontSize="12"
+                                                   TextColor="#7F8C8D"
+                                                   LineBreakMode="TailTruncation"
+                                                   MaxLines="2"/>
+                                            <Label Text="{Binding Author}"
+                                                   FontSize="10"
+                                                   TextColor="#95A5A6"/>
+                                        </StackLayout>
+                                    </Grid>
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ArticleSelectedCommand}"
+                                                              CommandParameter="{Binding}"/>
+                                    </Frame.GestureRecognizers>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
