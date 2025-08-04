@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppIntegradora10A.Views.AddReportePage"
+             Title="Agregar Reporte"
+             BackgroundColor="#F8F9FA">
+
+    <ContentPage.Resources>
+        <Style x:Key="FrameStyle" TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="White"/>
+            <Setter Property="CornerRadius" Value="12"/>
+            <Setter Property="HasShadow" Value="True"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+
+        <Style x:Key="EntryStyle" TargetType="Entry">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="#2C3E50"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+
+        <Style x:Key="PickerStyle" TargetType="Picker">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="#2C3E50"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="TextColor" Value="#5D6D7E"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Margin" Value="0,15,0,5"/>
+        </Style>
+
+        <Style x:Key="EditorStyle" TargetType="Editor">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="TextColor" Value="#2C3E50"/>
+            <Setter Property="BackgroundColor" Value="Transparent"/>
+            <Setter Property="HeightRequest" Value="100"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="0">
+
+            <!-- Header -->
+            <Frame BackgroundColor="#3498DB" HasShadow="True" CornerRadius="15" Margin="0,0,0,20">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="🎮" FontSize="32" VerticalOptions="Center"/>
+                    <Label Text="Nuevo Reporte de Incidencia" 
+                           FontSize="20" 
+                           FontAttributes="Bold"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- Tipo de Incidencia -->
+            <Label Text="TIPO DE INCIDENCIA" Style="{StaticResource LabelStyle}"/>
+            <Frame Style="{StaticResource FrameStyle}">
+                <Entry x:Name="TipoIncidenciaEntry" 
+                       Placeholder="Ej: Error al cargar partida, Lag en multijugador..."
+                       Style="{StaticResource EntryStyle}"/>
+            </Frame>
+
+            <!-- Categoría -->
+            <Label Text="CATEGORÍA" Style="{StaticResource LabelStyle}"/>
+            <Frame Style="{StaticResource FrameStyle}">
+                <Picker x:Name="CategoriaPicker" Style="{StaticResource PickerStyle}">
+                    <Picker.Items>
+                        <x:String>Bug</x:String>
+                        <x:String>Crash</x:String>
+                        <x:String>Performance</x:String>
+                        <x:String>Gameplay</x:String>
+                        <x:String>Audio</x:String>
+                        <x:String>Graficos</x:String>
+                        <x:String>Conectividad</x:String>
+                        <x:String>Otro</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+
+            <!-- Prioridad -->
+            <Label Text="PRIORIDAD" Style="{StaticResource LabelStyle}"/>
+            <Frame Style="{StaticResource FrameStyle}">
+                <Picker x:Name="PrioridadPicker" Style="{StaticResource PickerStyle}">
+                    <Picker.Items>
+                        <x:String>Baja</x:String>
+                        <x:String>Media</x:String>
+                        <x:String>Alta</x:String>
+                        <x:String>Critica</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Frame>
+
+            <!-- Descripción -->
+            <Label Text="DESCRIPCIÓN DETALLADA" Style="{StaticResource LabelStyle}"/>
+            <Frame Style="{StaticResource FrameStyle}">
+                <Editor x:Name="DescripcionEditor" 
+                        Placeholder="Describe detalladamente el problema: qué estabas haciendo cuando ocurrió, pasos para reproducir el error, etc."
+                        Style="{StaticResource EditorStyle}"/>
+            </Frame>
+
+            <!-- Código de Error -->
+            <Label Text="CÓDIGO DE ERROR (Opcional)" Style="{StaticResource LabelStyle}"/>
+            <Frame Style="{StaticResource FrameStyle}">
+                <Entry x:Name="CodigoErrorEntry" 
+                       Placeholder="Ej: ERR_001, CRASH_404, etc."
+                       Style="{StaticResource EntryStyle}"/>
+            </Frame>
+
+            <!-- Usuario Reportador -->
+            <Label Text="TU NOMBRE DE USUARIO" Style="{StaticResource LabelStyle}"/>
+            <Frame Style="{StaticResource FrameStyle}">
+                <Entry x:Name="UsuarioEntry" 
+                       Placeholder="Tu nombre de usuario en el juego"
+                       Style="{StaticResource EntryStyle}"/>
+            </Frame>
+
+            <!-- Botones -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="10" Margin="0,30,0,20">
+                <Button Text="❌ Cancelar" 
+                        x:Name="BtnCancelar" 
+                        Clicked="BtnCancelar_Clicked"
+                        BackgroundColor="#E74C3C"
+                        TextColor="White"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"/>
+
+                <Button Text="✅ Agregar Reporte" 
+                        x:Name="BtnAgregarReporte" 
+                        Clicked="BtnAgregarReporte_Clicked"
+                        BackgroundColor="#27AE60"
+                        TextColor="White"
+                        FontSize="16"
+                        FontAttributes="Bold"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator x:Name="LoadingIndicator" 
+                               IsVisible="False" 
+                               IsRunning="False"
+                               Color="#3498DB"
+                               HeightRequest="40"/>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
