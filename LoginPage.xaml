@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppIntegradora10A.Views.LoginPage"
+             Title="Login"
+             Shell.NavBarIsVisible="False">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+
+            <Grid HeightRequest="100">
+                <Ellipse>
+                    <Ellipse.Fill>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#3366ff" Offset="0" />
+                            <GradientStop Color="#00CCFF" Offset="1.0" />
+                        </LinearGradientBrush>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Label Text="Bienvenido a la APP"
+                       FontSize="32"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       Margin="20"
+                       HorizontalOptions="Center"
+                       VerticalTextAlignment="Start"/>
+            </Grid>
+
+            <Label Text="EMAIL ADDRESS"  FontSize="12" TextColor="#989898"/>
+            <Frame CornerRadius="12" BorderColor="White">
+                <Grid>
+                    <Entry x:Name="emailEntry" Placeholder="example@gmail.com" FontSize="14" TextColor="#333" />
+                </Grid>
+            </Frame>
+
+            <Label Text="PASSWORD" FontSize="12" TextColor="#909898"/>
+            <Frame CornerRadius="12" BorderColor="White">
+                <Entry x:Name="passwordEntry" Placeholder="*******" IsPassword="True" FontSize="14" TextColor="#333"/>
+            </Frame>
+
+            <Button Text="Log in" x:Name="OnLogin" Clicked="OnLogin_Clicked" 
+                    BackgroundColor="#3366FF" 
+                    TextColor="White" 
+                    FontSize="16"
+                    CornerRadius="25"
+                    HeightRequest="50"/>
+
+            <Grid ColumnDefinitions="*, Auto">
+                <Label Text="Registrar" TextColor="#3366FF" Grid.Column="1" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
