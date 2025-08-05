@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppIntegradora10A.MainPage"
+             Title="Panel de Control"
+             BackgroundColor="#F8F9FA">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Cerrar Sesión" 
+                     Clicked="OnLogout_Clicked"
+                     Order="Primary"
+                     Priority="0" />
+    </ContentPage.ToolbarItems>
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="0">
+
+            <!-- Header con bienvenida -->
+            <Frame BackgroundColor="#2C3E50" HasShadow="True" CornerRadius="15" Margin="0,0,0,30">
+                <StackLayout Spacing="10">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="🎮" FontSize="40" TextColor="White" VerticalOptions="Center"/>
+                        <Label Text="GameSupport Hub" 
+                               FontSize="24" 
+                               FontAttributes="Bold"
+                               TextColor="White"
+                               VerticalOptions="Center"
+                               Margin="10,0,0,0"/>
+                    </StackLayout>
+                    <Label Text="Panel de Control de Incidencias" 
+                           FontSize="16"
+                           TextColor="#BDC3C7"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Gestiona y reporta problemas del juego" 
+                           FontSize="12"
+                           TextColor="#95A5A6"
+                           HorizontalOptions="Center"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- Estadísticas rápidas -->
+            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="12" Margin="0,0,0,25" Padding="20">
+                <StackLayout>
+                    <Label Text="📊 Resumen Rápido" 
+                           FontSize="18" 
+                           FontAttributes="Bold" 
+                           TextColor="#2C3E50"
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,15"/>
+
+                    <Grid ColumnDefinitions="*,*,*" RowDefinitions="Auto,Auto" ColumnSpacing="15">
+                        <!-- Total Reportes -->
+                        <Frame Grid.Column="0" BackgroundColor="#3498DB" CornerRadius="10" Padding="15,10" HasShadow="False">
+                            <StackLayout HorizontalOptions="Center" Spacing="5">
+                                <Label Text="📋" FontSize="20" TextColor="White" HorizontalOptions="Center"/>
+                                <Label x:Name="LblTotalReportes" 
+                                       Text="0" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold" 
+                                       TextColor="White" 
+                                       HorizontalOptions="Center"/>
+                                <Label Text="Total" FontSize="10" TextColor="#ECF0F1" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <!-- Reportes Abiertos -->
+                        <Frame Grid.Column="1" BackgroundColor="#E74C3C" CornerRadius="10" Padding="15,10" HasShadow="False">
+                            <StackLayout HorizontalOptions="Center" Spacing="5">
+                                <Label Text="🔴" FontSize="20" TextColor="White" HorizontalOptions="Center"/>
+                                <Label x:Name="LblReportesAbiertos" 
+                                       Text="0" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold" 
+                                       TextColor="White" 
+                                       HorizontalOptions="Center"/>
+                                <Label Text="Abiertos" FontSize="10" TextColor="#ECF0F1" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <!-- Reportes Resueltos -->
+                        <Frame Grid.Column="2" BackgroundColor="#27AE60" CornerRadius="10" Padding="15,10" HasShadow="False">
+                            <StackLayout HorizontalOptions="Center" Spacing="5">
+                                <Label Text="✅" FontSize="20" TextColor="White" HorizontalOptions="Center"/>
+                                <Label x:Name="LblReportesResueltos" 
+                                       Text="0" 
+                                       FontSize="18" 
+                                       FontAttributes="Bold" 
+                                       TextColor="White" 
+                                       HorizontalOptions="Center"/>
+                                <Label Text="Resueltos" FontSize="10" TextColor="#ECF0F1" HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </Frame>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <!-- Acciones principales -->
+            <Label Text="🚀 ACCIONES PRINCIPALES" 
+                   FontSize="16" 
+                   FontAttributes="Bold" 
+                   TextColor="#5D6D7E" 
+                   Margin="0,0,0,15"/>
+
+            <!-- Botón Agregar Reporte -->
+            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="15" Margin="0,0,0,15" Padding="0">
+                <Button Text="➕ Reportar Nueva Incidencia" 
+                        x:Name="OnAddProduct" 
+                        Clicked="OnAddProduct_Clicked"
+                        BackgroundColor="#3498DB"
+                        TextColor="White"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        CornerRadius="15"
+                        HeightRequest="60"/>
+            </Frame>
+
+            <!-- Botón Lista de Reportes -->
+            <Frame BackgroundColor="White" HasShadow="True" CornerRadius="15" Margin="0,0,0,15" Padding="0">
+                <Button Text="📋 Ver Todos los Reportes" 
+                        x:Name="OnListProduct" 
+                        Clicked="OnListProduct_Clicked"
+                        BackgroundColor="#27AE60"
+                        TextColor="White"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        CornerRadius="15"
+                        HeightRequest="60"/>
+            </Frame>
+
+            <!-- Acciones secundarias -->
+            <Label Text="⚙️ HERRAMIENTAS ADICIONALES" 
+                   FontSize="16" 
+                   FontAttributes="Bold" 
+                   TextColor="#5D6D7E" 
+                   Margin="0,20,0,15"/>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                <!-- Botón Actualizar Estadísticas -->
+                <Frame Grid.Column="0" BackgroundColor="White" HasShadow="True" CornerRadius="12" Padding="0">
+                    <Button Text="🔄 Actualizar" 
+                            x:Name="BtnActualizar" 
+                            Clicked="BtnActualizar_Clicked"
+                            BackgroundColor="#F39C12"
+                            TextColor="White"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="50"/>
+                </Frame>
+
+                <!-- Botón Ayuda -->
+                <Frame Grid.Column="1" BackgroundColor="White" HasShadow="True" CornerRadius="12" Padding="0">
+                    <Button Text="❓ Ayuda" 
+                            x:Name="BtnAyuda" 
+                            Clicked="BtnAyuda_Clicked"
+                            BackgroundColor="#9B59B6"
+                            TextColor="White"
+                            FontSize="14"
+                            FontAttributes="Bold"
+                            CornerRadius="12"
+                            HeightRequest="50"/>
+                </Frame>
+            </Grid>
+
+            <!-- Filtros rápidos -->
+            <Label Text="🔍 FILTROS RÁPIDOS" 
+                   FontSize="16" 
+                   FontAttributes="Bold" 
+                   TextColor="#5D6D7E" 
+                   Margin="0,30,0,15"/>
+
+            <ScrollView Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" Spacing="10">
+                    <Button Text="🐛 Bugs" 
+                            x:Name="BtnFiltrarBugs" 
+                            Clicked="BtnFiltrarBugs_Clicked"
+                            BackgroundColor="#E67E22"
+                            TextColor="White"
+                            FontSize="12"
+                            CornerRadius="20"
+                            HeightRequest="40"
+                            WidthRequest="80"/>
+
+                    <Button Text="💥 Crashes" 
+                            x:Name="BtnFiltrarCrashes" 
+                            Clicked="BtnFiltrarCrashes_Clicked"
+                            BackgroundColor="#C0392B"
+                            TextColor="White"
+                            FontSize="12"
+                            CornerRadius="20"
+                            HeightRequest="40"
+                            WidthRequest="90"/>
+
+                    <Button Text="⚡ Performance" 
+                            x:Name="BtnFiltrarPerformance" 
+                            Clicked="BtnFiltrarPerformance_Clicked"
+                            BackgroundColor="#8E44AD"
+                            TextColor="White"
+                            FontSize="12"
+                            CornerRadius="20"
+                            HeightRequest="40"
+                            WidthRequest="110"/>
+
+                    <Button Text="🎯 Críticos" 
+                            x:Name="BtnFiltrarCriticos" 
+                            Clicked="BtnFiltrarCriticos_Clicked"
+                            BackgroundColor="#E74C3C"
+                            TextColor="White"
+                            FontSize="12"
+                            CornerRadius="20"
+                            HeightRequest="40"
+                            WidthRequest="85"/>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Información adicional -->
+            <Frame BackgroundColor="#ECF0F1" CornerRadius="10" Margin="0,30,0,20" Padding="15">
+                <StackLayout>
+                    <Label Text="💡 Consejos para Reportar" 
+                           FontSize="14" 
+                           FontAttributes="Bold" 
+                           TextColor="#2C3E50"
+                           HorizontalOptions="Center"/>
+                    <Label Text="• Describe detalladamente el problema" 
+                           FontSize="12" 
+                           TextColor="#5D6D7E"/>
+                    <Label Text="• Incluye pasos para reproducir el error" 
+                           FontSize="12" 
+                           TextColor="#5D6D7E"/>
+                    <Label Text="• Proporciona códigos de error si los hay" 
+                           FontSize="12" 
+                           TextColor="#5D6D7E"/>
+                    <Label Text="• Selecciona la prioridad adecuada" 
+                           FontSize="12" 
+                           TextColor="#5D6D7E"/>
+                </StackLayout>
+            </Frame>
+
+            <!-- Loading Indicator -->
+            <ActivityIndicator x:Name="LoadingIndicator" 
+                               IsVisible="False" 
+                               IsRunning="False"
+                               Color="#3498DB"
+                               HeightRequest="40"
+                               Margin="0,20"/>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>
